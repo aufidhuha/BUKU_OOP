@@ -4,6 +4,11 @@
  */
 package framePackage;
 
+import com.formdev.flatlaf.FlatLightLaf;
+import javax.swing.JOptionPane;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
+
 /**
  *
  * @author ASUS
@@ -26,23 +31,197 @@ public class mainFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        buttonDashboard = new javax.swing.JButton();
+        buttonKategori = new javax.swing.JButton();
+        buttonPenulis = new javax.swing.JButton();
+        buttonBuku = new javax.swing.JButton();
+        buttonKeamanan = new javax.swing.JButton();
+        buttonLogout = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
+        jPanel2.setBackground(new java.awt.Color(93, 64, 55));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesPackage/icons8-book-48.png"))); // NOI18N
+        jLabel1.setText("THE-BUKU");
+
+        buttonDashboard.setBackground(new java.awt.Color(93, 64, 55));
+        buttonDashboard.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        buttonDashboard.setForeground(new java.awt.Color(255, 255, 255));
+        buttonDashboard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesPackage/icons8-dashboard-layout-24.png"))); // NOI18N
+        buttonDashboard.setText("DASHBOARD");
+        buttonDashboard.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 15, 1, 1));
+        buttonDashboard.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        buttonDashboard.setIconTextGap(10);
+
+        buttonKategori.setBackground(new java.awt.Color(93, 64, 55));
+        buttonKategori.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        buttonKategori.setForeground(new java.awt.Color(255, 255, 255));
+        buttonKategori.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesPackage/icons8-category-24.png"))); // NOI18N
+        buttonKategori.setText("KATEGORI");
+        buttonKategori.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 15, 1, 1));
+        buttonKategori.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        buttonKategori.setIconTextGap(10);
+
+        buttonPenulis.setBackground(new java.awt.Color(93, 64, 55));
+        buttonPenulis.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        buttonPenulis.setForeground(new java.awt.Color(255, 255, 255));
+        buttonPenulis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesPackage/icons8-writer-24.png"))); // NOI18N
+        buttonPenulis.setText("PENULIS");
+        buttonPenulis.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 15, 1, 1));
+        buttonPenulis.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        buttonPenulis.setIconTextGap(10);
+
+        buttonBuku.setBackground(new java.awt.Color(93, 64, 55));
+        buttonBuku.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        buttonBuku.setForeground(new java.awt.Color(255, 255, 255));
+        buttonBuku.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesPackage/icons8-book-24.png"))); // NOI18N
+        buttonBuku.setText("BUKU");
+        buttonBuku.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 15, 1, 1));
+        buttonBuku.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        buttonBuku.setIconTextGap(10);
+
+        buttonKeamanan.setBackground(new java.awt.Color(93, 64, 55));
+        buttonKeamanan.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        buttonKeamanan.setForeground(new java.awt.Color(255, 255, 255));
+        buttonKeamanan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesPackage/icons8-secure-24.png"))); // NOI18N
+        buttonKeamanan.setText("KEAMANAN");
+        buttonKeamanan.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 15, 1, 1));
+        buttonKeamanan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        buttonKeamanan.setIconTextGap(10);
+
+        buttonLogout.setBackground(new java.awt.Color(93, 64, 55));
+        buttonLogout.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        buttonLogout.setForeground(new java.awt.Color(255, 255, 255));
+        buttonLogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesPackage/icons8-logout-24.png"))); // NOI18N
+        buttonLogout.setText("LOGOUT");
+        buttonLogout.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 15, 1, 1));
+        buttonLogout.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        buttonLogout.setIconTextGap(10);
+        buttonLogout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonLogoutActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(16, Short.MAX_VALUE))
+            .addComponent(buttonDashboard, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(buttonKategori, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(buttonPenulis, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(buttonBuku, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(buttonKeamanan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(buttonLogout, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jLabel1)
+                .addGap(49, 49, 49)
+                .addComponent(buttonDashboard, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(buttonKategori, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(buttonPenulis, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(buttonBuku, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(buttonKeamanan, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(buttonLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(347, Short.MAX_VALUE))
+        );
+
+        jPanel3.setBackground(new java.awt.Color(141, 110, 99));
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 932, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 62, Short.MAX_VALUE)
+        );
+
+        jPanel4.setBackground(new java.awt.Color(232, 232, 232));
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1092, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 750, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void buttonLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLogoutActionPerformed
+        // TODO add your handling code here:
+        int yesOrNo = JOptionPane.showConfirmDialog(null, "Apakah anda yakin ingin keluar?", "Konfirmasi", JOptionPane.YES_NO_OPTION);
+        
+        if (yesOrNo == JOptionPane.YES_OPTION) {
+            dispose();
+            new loginFrame().setVisible(true);
+        }
+    }//GEN-LAST:event_buttonLogoutActionPerformed
 
     /**
      * @param args the command line arguments
@@ -54,20 +233,8 @@ public class mainFrame extends javax.swing.JFrame {
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
         try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(mainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(mainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(mainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(mainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            UIManager.setLookAndFeel(new FlatLightLaf());
+        } catch (UnsupportedLookAndFeelException unsupportedLookAndFeelException) {
         }
         //</editor-fold>
 
@@ -80,5 +247,16 @@ public class mainFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton buttonBuku;
+    private javax.swing.JButton buttonDashboard;
+    private javax.swing.JButton buttonKategori;
+    private javax.swing.JButton buttonKeamanan;
+    private javax.swing.JButton buttonLogout;
+    private javax.swing.JButton buttonPenulis;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     // End of variables declaration//GEN-END:variables
 }

@@ -4,10 +4,52 @@
  */
 package classPackage;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+
 /**
  *
  * @author ASUS
  */
-public class kategoriClass {
+public class kategoriClass extends connectionClass{
+    
+    private String idKategori, namaKategori;
+    private final Connection cnVar;
+
+    public kategoriClass() {
+        this.cnVar = super.getConnection();
+    }
+
+    public String getIdKategori() {
+        return idKategori;
+    }
+
+    public void setIdKategori(String idKategori) {
+        this.idKategori = idKategori;
+    }
+
+    public String getNamaKategori() {
+        return namaKategori;
+    }
+
+    public void setNamaKategori(String namaKategori) {
+        this.namaKategori = namaKategori;
+    }
+
+    @Override
+    public ResultSet showData() {
+       
+        return this.rsVar;
+    }
+
+    @Override
+    public void saveData() {
+        
+    }
+
+    @Override
+    public void deleteData() {
+        
+    }
     
 }
