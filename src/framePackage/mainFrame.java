@@ -5,9 +5,25 @@
 package framePackage;
 
 import com.formdev.flatlaf.FlatLightLaf;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.FontMetrics;
+import java.awt.Graphics2D;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.Timer;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
+import panelPackage.bukuPanel;
+import panelPackage.dashboardPanel;
+import panelPackage.kategoriPanel;
+import panelPackage.keamananPanel;
+import panelPackage.penulisPanel;
 
 /**
  *
@@ -20,6 +36,48 @@ public class mainFrame extends javax.swing.JFrame {
      */
     public mainFrame() {
         initComponents();
+        runningText();
+    }
+
+    public void runningText() {
+        String text = "Selamat datang di Aplikasi SI-EKSTRA Sistem Ekstrakurikuler, "
+                + "untuk mengembangkan minat dan bakat siswa di Institusi atau Lembaga Pendidikan. "
+                + "Aplikasi SI-EKSTRA dapat membantu memanajemen pendataan siswa yang aktif "
+                + "mengikuti Ekstrakurikuler.  -  "
+                + new SimpleDateFormat("dd-MM-yyyy").format(new Date());;
+
+        Font font = labelRunningText.getFont();
+        FontMetrics fm = labelRunningText.getFontMetrics(font);
+        int textWidth = fm.stringWidth(text);
+
+        final int x[] = {labelRunningText.getWidth()};
+
+        Timer timer = new Timer(10, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int w = labelRunningText.getWidth();
+                int h = labelRunningText.getHeight();
+
+                BufferedImage img = new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
+                Graphics2D g2 = img.createGraphics();
+
+                g2.setFont(font);
+                g2.setColor(labelRunningText.getForeground());
+                g2.drawString(text, x[0], h - 5);
+                g2.dispose();
+
+                labelRunningText.setIcon(new ImageIcon(img));
+                labelRunningText.setText("");
+
+                x[0] -= 1;
+
+                if (x[0] + textWidth < 0) {
+                    x[0] = w;
+                }
+            }
+
+        });
+        timer.start();
     }
 
     /**
@@ -32,7 +90,7 @@ public class mainFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
+        sidebarPanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         buttonDashboard = new javax.swing.JButton();
         buttonKategori = new javax.swing.JButton();
@@ -40,15 +98,16 @@ public class mainFrame extends javax.swing.JFrame {
         buttonBuku = new javax.swing.JButton();
         buttonKeamanan = new javax.swing.JButton();
         buttonLogout = new javax.swing.JButton();
-        jPanel3 = new javax.swing.JPanel();
-        jPanel4 = new javax.swing.JPanel();
+        navbarPanel = new javax.swing.JPanel();
+        labelRunningText = new javax.swing.JLabel();
+        contentPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jPanel2.setBackground(new java.awt.Color(93, 64, 55));
+        sidebarPanel.setBackground(new java.awt.Color(93, 64, 55));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -63,6 +122,11 @@ public class mainFrame extends javax.swing.JFrame {
         buttonDashboard.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 15, 1, 1));
         buttonDashboard.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         buttonDashboard.setIconTextGap(10);
+        buttonDashboard.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonDashboardActionPerformed(evt);
+            }
+        });
 
         buttonKategori.setBackground(new java.awt.Color(93, 64, 55));
         buttonKategori.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -72,6 +136,11 @@ public class mainFrame extends javax.swing.JFrame {
         buttonKategori.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 15, 1, 1));
         buttonKategori.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         buttonKategori.setIconTextGap(10);
+        buttonKategori.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonKategoriActionPerformed(evt);
+            }
+        });
 
         buttonPenulis.setBackground(new java.awt.Color(93, 64, 55));
         buttonPenulis.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -81,6 +150,11 @@ public class mainFrame extends javax.swing.JFrame {
         buttonPenulis.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 15, 1, 1));
         buttonPenulis.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         buttonPenulis.setIconTextGap(10);
+        buttonPenulis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonPenulisActionPerformed(evt);
+            }
+        });
 
         buttonBuku.setBackground(new java.awt.Color(93, 64, 55));
         buttonBuku.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -90,6 +164,11 @@ public class mainFrame extends javax.swing.JFrame {
         buttonBuku.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 15, 1, 1));
         buttonBuku.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         buttonBuku.setIconTextGap(10);
+        buttonBuku.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonBukuActionPerformed(evt);
+            }
+        });
 
         buttonKeamanan.setBackground(new java.awt.Color(93, 64, 55));
         buttonKeamanan.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -99,6 +178,11 @@ public class mainFrame extends javax.swing.JFrame {
         buttonKeamanan.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 15, 1, 1));
         buttonKeamanan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         buttonKeamanan.setIconTextGap(10);
+        buttonKeamanan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonKeamananActionPerformed(evt);
+            }
+        });
 
         buttonLogout.setBackground(new java.awt.Color(93, 64, 55));
         buttonLogout.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -114,11 +198,11 @@ public class mainFrame extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout sidebarPanelLayout = new javax.swing.GroupLayout(sidebarPanel);
+        sidebarPanel.setLayout(sidebarPanelLayout);
+        sidebarPanelLayout.setHorizontalGroup(
+            sidebarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(sidebarPanelLayout.createSequentialGroup()
                 .addGap(14, 14, 14)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(16, Short.MAX_VALUE))
@@ -129,9 +213,9 @@ public class mainFrame extends javax.swing.JFrame {
             .addComponent(buttonKeamanan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(buttonLogout, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        sidebarPanelLayout.setVerticalGroup(
+            sidebarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(sidebarPanelLayout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addComponent(jLabel1)
                 .addGap(49, 49, 49)
@@ -149,52 +233,52 @@ public class mainFrame extends javax.swing.JFrame {
                 .addContainerGap(347, Short.MAX_VALUE))
         );
 
-        jPanel3.setBackground(new java.awt.Color(141, 110, 99));
+        navbarPanel.setBackground(new java.awt.Color(141, 110, 99));
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 932, Short.MAX_VALUE)
+        labelRunningText.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        labelRunningText.setForeground(new java.awt.Color(255, 255, 255));
+        labelRunningText.setText("TEXT");
+
+        javax.swing.GroupLayout navbarPanelLayout = new javax.swing.GroupLayout(navbarPanel);
+        navbarPanel.setLayout(navbarPanelLayout);
+        navbarPanelLayout.setHorizontalGroup(
+            navbarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(navbarPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(labelRunningText, javax.swing.GroupLayout.DEFAULT_SIZE, 920, Short.MAX_VALUE)
+                .addContainerGap())
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 62, Short.MAX_VALUE)
+        navbarPanelLayout.setVerticalGroup(
+            navbarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(navbarPanelLayout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(labelRunningText)
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
-        jPanel4.setBackground(new java.awt.Color(232, 232, 232));
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
+        contentPanel.setBackground(new java.awt.Color(232, 232, 232));
+        contentPanel.setLayout(new java.awt.CardLayout(1, 1));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(sidebarPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(navbarPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(contentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(sidebarPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(navbarPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(contentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -216,12 +300,52 @@ public class mainFrame extends javax.swing.JFrame {
     private void buttonLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLogoutActionPerformed
         // TODO add your handling code here:
         int yesOrNo = JOptionPane.showConfirmDialog(null, "Apakah anda yakin ingin keluar?", "Konfirmasi", JOptionPane.YES_NO_OPTION);
-        
+
         if (yesOrNo == JOptionPane.YES_OPTION) {
             dispose();
             new loginFrame().setVisible(true);
         }
     }//GEN-LAST:event_buttonLogoutActionPerformed
+
+    private void buttonDashboardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDashboardActionPerformed
+        // TODO add your handling code here:
+        contentPanel.removeAll();
+        contentPanel.add(new dashboardPanel());
+        contentPanel.revalidate();
+        contentPanel.repaint();
+    }//GEN-LAST:event_buttonDashboardActionPerformed
+
+    private void buttonKategoriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonKategoriActionPerformed
+        // TODO add your handling code here:
+        contentPanel.removeAll();
+        contentPanel.add(new kategoriPanel());
+        contentPanel.revalidate();
+        contentPanel.repaint();
+    }//GEN-LAST:event_buttonKategoriActionPerformed
+
+    private void buttonPenulisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPenulisActionPerformed
+        // TODO add your handling code here:
+        contentPanel.removeAll();
+        contentPanel.add(new penulisPanel());
+        contentPanel.revalidate();
+        contentPanel.repaint();
+    }//GEN-LAST:event_buttonPenulisActionPerformed
+
+    private void buttonBukuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBukuActionPerformed
+        // TODO add your handling code here:
+        contentPanel.removeAll();
+        contentPanel.add(new bukuPanel());
+        contentPanel.revalidate();
+        contentPanel.repaint();
+    }//GEN-LAST:event_buttonBukuActionPerformed
+
+    private void buttonKeamananActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonKeamananActionPerformed
+        // TODO add your handling code here:
+        contentPanel.removeAll();
+        contentPanel.add(new keamananPanel());
+        contentPanel.revalidate();
+        contentPanel.repaint();
+    }//GEN-LAST:event_buttonKeamananActionPerformed
 
     /**
      * @param args the command line arguments
@@ -253,10 +377,11 @@ public class mainFrame extends javax.swing.JFrame {
     private javax.swing.JButton buttonKeamanan;
     private javax.swing.JButton buttonLogout;
     private javax.swing.JButton buttonPenulis;
+    public static javax.swing.JPanel contentPanel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
+    private javax.swing.JLabel labelRunningText;
+    private javax.swing.JPanel navbarPanel;
+    private javax.swing.JPanel sidebarPanel;
     // End of variables declaration//GEN-END:variables
 }

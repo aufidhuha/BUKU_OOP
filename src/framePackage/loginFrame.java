@@ -4,8 +4,10 @@
  */
 package framePackage;
 
+import classPackage.userClass;
 import com.formdev.flatlaf.FlatClientProperties;
 import com.formdev.flatlaf.FlatLightLaf;
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
@@ -20,9 +22,33 @@ public class loginFrame extends javax.swing.JFrame {
      */
     public loginFrame() {
         initComponents();
-        
+
         txtUsername.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "USERNAME");
         txtPassword.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "PASSWORD");
+    }
+
+    public void loginAppBuku() {
+
+        if (txtUsername.getText().isBlank() || txtPassword.getText().isBlank()) {
+            JOptionPane.showMessageDialog(null, "Username dan Password tidak boleh kosong!", "Peringatan", JOptionPane.WARNING_MESSAGE);
+
+        } else {
+
+            userClass userLogin = new userClass();
+
+            userLogin.setUsername(txtUsername.getText());
+            userLogin.setPassword(txtPassword.getText());
+            
+            boolean successLogin = userLogin.loginApp();
+            
+            if (successLogin) {
+                dispose();
+                new mainFrame().setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(null, "Username atau Password salah", "Peringatan", JOptionPane.WARNING_MESSAGE);
+            }
+
+        }
     }
 
     /**
@@ -76,6 +102,11 @@ public class loginFrame extends javax.swing.JFrame {
         txtPassword.setForeground(new java.awt.Color(255, 255, 255));
         txtPassword.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         txtPassword.setCaretColor(new java.awt.Color(255, 255, 255));
+        txtPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPasswordActionPerformed(evt);
+            }
+        });
 
         jSeparator2.setForeground(new java.awt.Color(255, 255, 255));
         jSeparator2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 2));
@@ -89,6 +120,11 @@ public class loginFrame extends javax.swing.JFrame {
         buttonLogin.setForeground(new java.awt.Color(255, 255, 255));
         buttonLogin.setText("LOGIN");
         buttonLogin.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        buttonLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonLoginActionPerformed(evt);
+            }
+        });
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
@@ -170,12 +206,23 @@ public class loginFrame extends javax.swing.JFrame {
 
     private void txtUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsernameActionPerformed
         // TODO add your handling code here:
+        loginAppBuku();
     }//GEN-LAST:event_txtUsernameActionPerformed
 
     private void labelCloseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelCloseMouseClicked
         // TODO add your handling code here:
         System.exit(0);
     }//GEN-LAST:event_labelCloseMouseClicked
+
+    private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed
+        // TODO add your handling code here:
+        loginAppBuku();
+    }//GEN-LAST:event_txtPasswordActionPerformed
+
+    private void buttonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLoginActionPerformed
+        // TODO add your handling code here:
+        loginAppBuku();
+    }//GEN-LAST:event_buttonLoginActionPerformed
 
     /**
      * @param args the command line arguments

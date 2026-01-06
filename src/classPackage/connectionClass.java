@@ -23,7 +23,7 @@ public abstract class connectionClass {
     private String db = "buku_oop";
     private String user = "root";
     private String password = "";
-    private String url = "jdbc:mysql//" + host + ":" + port + "/" + db;
+    private String url = "jdbc:mysql://" + host + ":" + port + "/" + db;
 
     private Connection cnVar;
     protected PreparedStatement psVar;
@@ -34,12 +34,10 @@ public abstract class connectionClass {
     public Connection getConnection() {
 
         try {
-
             DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
             cnVar = DriverManager.getConnection(url, user, password);
 
         } catch (SQLException sQLException) {
-
             JOptionPane.showMessageDialog(null, "Error, Gagal terkoneksi ke Database : " + sQLException.getMessage());
 
         }
